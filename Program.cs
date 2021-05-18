@@ -15,8 +15,6 @@ namespace Elevator
                 Directory.CreateDirectory(folder);
             }
 
-            SaveElevatorsLifespan(0, 0);
-
             while (true)
             {
                 Console.WriteLine("stage of elevator A (0-10)");
@@ -34,7 +32,7 @@ namespace Elevator
         }
 
         public static void SaveElevatorsLifespan(int liftA, int liftB)
-        {            
+        {
             string[] arr = { liftA.ToString(), liftB.ToString() };
 
             using (var sw = new StreamWriter(path))
@@ -46,11 +44,12 @@ namespace Elevator
 
         public static string[] ReadLifespan()
         {
+            if (!File.Exists(path))
+            {
+                return new string[] { "0", "0" };
+            }            
 
             string[] lifespan = File.ReadAllLines(path);
-
-            int liftALifecycle = Convert.ToInt32(lifespan[0]);
-            int liftBLifecycle = Convert.ToInt32(lifespan[1]);
 
             return lifespan;
         }
@@ -98,8 +97,10 @@ namespace Elevator
                 SaveElevatorsLifespan(liftALifecycle, liftBLifecycle);
                 return "Elevator B";
             }
-
         }
+
+        
+
     }
 }
 
