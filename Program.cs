@@ -27,7 +27,7 @@ namespace Elevator
                 Console.WriteLine("input your current stage(0-10)");
                 int current = Int32.Parse(Console.ReadLine());
 
-                string s = GetCount(firstLift, secondLift, current);
+                string s = GetElevator(firstLift, secondLift, current);
                 Console.WriteLine(s);
             }
             Console.ReadKey();
@@ -55,7 +55,7 @@ namespace Elevator
             return lifespan;
         }
 
-        public static string GetCount(int firstLift, int secondLift, int current)
+        public static string GetElevator(int firstLift, int secondLift, int current)
         {
             string[] arr = ReadLifespan();
 
