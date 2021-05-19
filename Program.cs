@@ -15,19 +15,60 @@ namespace Elevator
                 Directory.CreateDirectory(folder);
             }
 
-            while (true)
+            int failedTests = 0;
+
+            if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftBOptimal_ReturnsB())
             {
-                Console.WriteLine("stage of elevator A (0-10)");
-                int firstLift = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("stage of elevator B (0-10)");
-                int secondLift = Int32.Parse(Console.ReadLine());
-
-                Console.WriteLine("input your current stage(0-10)");
-                int current = Int32.Parse(Console.ReadLine());
-
-                string s = GetElevator(firstLift, secondLift, current);
-                Console.WriteLine(s);
+                failedTests++;
             }
+            if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftAOptimal_ReturnsA())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftAOptimal_ReturnsB())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftBOptimal_ReturnsA())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanAAboveMe_LiftBOptimal_ReturnsA())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBAboveMe_LiftBOptimal_ReturnsB())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanABelowMe_LiftBOptimal_ReturnsA())
+            {
+                failedTests++;
+            }
+            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBBelowMe_LiftBOptimal_ReturnsB())
+            {
+                failedTests++;
+            }                                                 
+
+
+            if (failedTests == 0)
+            {
+                Console.WriteLine("Test completed succesfully!!");
+            }
+
+            //while (true)
+            //{
+            //    Console.WriteLine("stage of elevator A (0-10)");
+            //    int firstLift = Int32.Parse(Console.ReadLine());
+            //    Console.WriteLine("stage of elevator B (0-10)");
+            //    int secondLift = Int32.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("input your current stage(0-10)");
+            //    int current = Int32.Parse(Console.ReadLine());
+
+            //    string s = GetElevator(firstLift, secondLift, current);
+            //    Console.WriteLine(s);
+            //}
             Console.ReadKey();
         }
 
