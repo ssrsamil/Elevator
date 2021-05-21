@@ -17,39 +17,73 @@ namespace Elevator
 
             int failedTests = 0;
 
-            if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftBOptimal_ReturnsB())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftAOptimal_ReturnsA())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftAOptimal_ReturnsB())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftBOptimal_ReturnsA())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanAAboveMe_LiftBOptimal_ReturnsA())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBAboveMe_LiftBOptimal_ReturnsB())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanABelowMe_LiftBOptimal_ReturnsA())
-            {
-                failedTests++;
-            }
-            if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBBelowMe_LiftBOptimal_ReturnsB())
-            {
-                failedTests++;
-            }                                                 
+            //if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftBOptimal_ReturnsB())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftABelowLiftBAbove_LiftAOptimal_ReturnsA())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftAOptimal_ReturnsB())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftBBelowLiftAAbove_LiftBOptimal_ReturnsA())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanAAboveMe_LiftBOptimal_ReturnsA())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBAboveMe_LiftBOptimal_ReturnsB())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanABelowMe_LiftBOptimal_ReturnsA())
+            //{
+            //    failedTests++;
+            //}
+            //if (!UnitTests.GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBBelowMe_LiftBOptimal_ReturnsB())
+            //{
+            //    failedTests++;
+            //}
 
+
+            if (!UnitTests.UnitTestMethod(0, 0, "GetElevator_LiftABelowLiftBAbove_LiftBOptimal_ReturnsB", "Elevator B", 1, 9, 8))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(0, 0, "GetElevator_LiftABelowLiftBAbove_LiftAOptimal_ReturnsA", "Elevator A", 1, 9, 2))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(0, 0, "GetElevator_LiftBBelowLiftAAbove_LiftAOptimal_ReturnsB", "Elevator B", 9, 1, 2))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(0, 0, "GetElevator_LiftBBelowLiftAAbove_LiftBOptimal_ReturnsA", "Elevator A", 9, 1, 8))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(0, 5, "GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanAAboveMe_LiftBOptimal_ReturnsA", "Elevator A", 9, 9, 5))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(5, 0, "GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBAboveMe_LiftBOptimal_ReturnsB", "Elevator B", 9, 9, 5))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(0, 5, "GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftBMorethanABelowMe_LiftBOptimal_ReturnsA", "Elevator A", 1, 1, 5))
+            {
+                failedTests++;
+            }
+            if (!UnitTests.UnitTestMethod(5, 0, "GetElevator_LiftAAndLiftBInTheSameFloorAndLifecycleLiftAMorethanBBelowMe_LiftBOptimal_ReturnsB", "Elevator B", 1, 1, 5))
+            {
+                failedTests++;
+            }
+            
 
             if (failedTests == 0)
             {
@@ -70,6 +104,7 @@ namespace Elevator
             //    Console.WriteLine(s);
             //}
             Console.ReadKey();
+
         }
 
         public static void SaveElevatorsLifespan(int liftA, int liftB)
@@ -88,7 +123,7 @@ namespace Elevator
             if (!File.Exists(path))
             {
                 return new string[] { "0", "0" };
-            }            
+            }
 
             string[] lifespan = File.ReadAllLines(path);
 
@@ -138,10 +173,7 @@ namespace Elevator
                 SaveElevatorsLifespan(liftALifecycle, liftBLifecycle);
                 return "Elevator B";
             }
-        }
-
-        
-
+        } 
     }
 }
 
